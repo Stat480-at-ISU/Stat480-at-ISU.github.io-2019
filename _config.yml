@@ -1,0 +1,24 @@
+# Site settings
+name: Stat 480 at ISU
+title: Applied Statistical Computing
+email: hofmann@iastate.edu
+description: Not all data lives in nice, clean spreadsheets, not all data fits in a computer's main memory.
+# Build settings
+markdown: kramdown
+url: http://localhost:4000
+markdown: kramdown
+navigation:
+- text: Home
+  url: /index.html
+- text: Schedule
+  url: /schedule.html
+- text: Homework
+  url: /homework.html
+- text: Midterm
+  url: /midterm.html
+- text: Final Projects
+  url: /projects.html
+collections:
+  topics:
+    output: true
+    permalink: /blog/:path/
