@@ -26,4 +26,4 @@ Note:
 combined <- rbind(data1, data2)
 ```
 
-For the submission: submit your solution in an R Mardown file and (just for insurance) submit the corresponding html file with it. 
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
