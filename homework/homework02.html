@@ -125,26 +125,18 @@ $(document).ready(function () {
 </div>
 
 
-<div id="swiss-banknotes" class="section level2">
-<h2>Swiss Banknotes</h2>
+<div id="tropical-atmosphere-ocean-array-tao" class="section level2">
+<h2>Tropical Atmosphere-Ocean Array (TAO)</h2>
 <ol style="list-style-type: decimal">
 <li>Download the RMarkdown file with these homework instructions to use as a template for your work. Make sure to replace “Your Name” in the YAML with your name.</li>
-<li>The R package <code>alr3</code> contains a data set called <code>banknote</code>, consisting of (physical) measurements on 200 Swiss bank notes, 100 of which are genuine, while the other half is counterfeit. Load this data set (you might have to install the package) using the code below. Also run the cryptic third line - it will make your life a lot easier for the rest of the homework. This turns variable Y explicitly into a factor variable, i.e. makes it discrete. We will discuss this in the course material later in more detail.</li>
+<li>Using the command below, read in the tao data set into your R session. more information on the data can be found <a href="http://www.ggobi.org/book/chap-data.pdf">here</a> (page 159.</li>
 </ol>
-<pre class="r"><code>library(alr3)
-data(banknote)
-banknote$Y &lt;- factor(banknote$Y)</code></pre>
+<pre class="r"><code>tao &lt;- read.csv(&quot;http://www.ggobi.org/book/data/tao.csv&quot;)</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Us eone of our object inspecting functions and interpret the result in the data that you see.</li>
-<li>Use the package <code>ggplot2</code> to draw a barchart of Y (0 is genuine, 1 is counterfeit). Map Y also to the fill color of the barchart.</li>
-<li>Use the package <code>ggplot2</code> to draw a histogram of one of the variables in the dataset that shows a distinction between genuine and counterfeit banknotes. Use fill color to show this difference. Choose the binwidth such that there are no gaps in the middle range of the histogram.</li>
-<li>Use the package <code>ggplot2</code> to draw a scatterplot of two (continuous) measurements, color by Y. Try to find a pair of measurements that allow you to separate perfectly between genuine and counterfeit banknotes.</li>
-<li>For each of the three figures above, write a two-three sentence summary, describing the
-<ol style="list-style-type: lower-alpha">
-<li><strong>structure of the plot</strong>: what type of plot is it? Whcih variables are mapped to x, to y, and to the (fill) color?</li>
-<li><strong>main message of the plot</strong>: what is your main finding, i.e. what do you want viewers to learn from the plot?</li>
-<li><strong>additional message</strong>: point out anomalies or outliers, if there are any.</li>
-</ol></li>
+<li>The order of the records in the data set is such, that the first 368 records correspond to the year 1997, and the next 368 records correspond to the year 1993. Use row indices to create two subsets of the data, one with records for the year 1993, one for the year 1997.</li>
+<li>For each of the two subsets, compute the average sea surface temperature (<code>sea.surface.temp</code>) and its standard deviation. Comment on the results. (You might have to deal with missing values appropriately).</li>
+<li>Compute the correlation between sea surface temperature and air temperature (<code>air.temp</code>) for each of the years 1993 and 1997. What does the result tell you about average air temperatures in light of the previous findings?</li>
+<li>Use <code>ggplot2</code> to draw a scatterplot of air temperature and sea surface temperature. Color points by year (<code>year</code>). Comment on the result.</li>
 </ol>
 <p>Due date: the homework is due before class on Thursday.</p>
 <p>For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it.</p>

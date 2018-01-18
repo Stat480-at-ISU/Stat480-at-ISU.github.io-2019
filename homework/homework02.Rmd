@@ -9,26 +9,20 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Swiss Banknotes
+## Tropical Atmosphere-Ocean Array (TAO)
 
 1. Download the RMarkdown file with these homework instructions to use as a template for your work.
 Make sure to replace "Your Name" in the YAML with your name.
-2. The R package `alr3` contains a data set called `banknote`, consisting of (physical) measurements on 200 Swiss bank notes, 100 of which are genuine, while the other half is counterfeit. Load this data set (you might have to install the package) using the code below. Also run the cryptic third line - it will make your life a lot easier for the rest of the homework. This turns variable Y explicitly into a factor variable, i.e. makes it discrete. We will discuss this in the course material later in more detail.
+2. Using the command below, read in the tao data set into your R session. more information on the data can be found  [here](http://www.ggobi.org/book/chap-data.pdf) (page 159.
 
-```{r, message = FALSE}
-library(alr3)
-data(banknote)
-banknote$Y <- factor(banknote$Y)
+```{r}
+tao <- read.csv("http://www.ggobi.org/book/data/tao.csv")
 ```
-3. Us eone of our object inspecting functions and interpret the result in the data that you see.
-4. Use the package `ggplot2` to draw a barchart of Y (0 is genuine, 1 is counterfeit). Map Y also to the fill color of the barchart.
-5. Use the package `ggplot2` to draw a histogram of one of the variables in the dataset that shows a distinction between genuine and counterfeit banknotes. Use fill color to show this difference. Choose the binwidth such that there are no gaps in the middle range of the histogram.
-6. Use the package `ggplot2` to draw a scatterplot of two (continuous) measurements, color by Y. Try to find a pair of measurements that allow you to separate perfectly between genuine and counterfeit banknotes. 
-7. For each of the three figures above, write a two-three sentence summary, describing the
-    a. **structure of the plot**: what type of plot is it? Whcih variables are mapped to x, to y, and to the (fill) color?
-    b. **main message of the plot**: what is your main finding, i.e. what do you want viewers to learn from the plot?
-    c. **additional message**: point out anomalies or outliers, if there are any. 
 
+3. The order of the records in the data set is such, that the first 368 records correspond to the year 1997, and the next 368 records correspond to the year 1993. Use row indices to create two subsets of the data, one with records for the year 1993, one for the year 1997.
+4. For each of the two subsets, compute the average sea surface temperature (`sea.surface.temp`) and its standard deviation. Comment on the results. (You might have to deal with missing values appropriately).
+5. Compute the correlation between sea surface temperature and air temperature (`air.temp`) for each of the years 1993 and 1997. What does the result tell you about average air temperatures in light of the previous findings?
+6. Use `ggplot2` to draw a scatterplot of air temperature and sea surface temperature. Color points by year (`year`). Comment on the result. 
 
 Due date: the homework is due before class on Thursday. 
 
