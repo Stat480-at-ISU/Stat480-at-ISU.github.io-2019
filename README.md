@@ -1,2 +1,2 @@
-# DS202-at-ISU.github.io
-webfront of DS 202
+# Stat480-at-ISU.github.io
+webfront of Stat 480
