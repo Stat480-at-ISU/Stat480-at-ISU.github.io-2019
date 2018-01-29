@@ -20,7 +20,7 @@ library(alr3)
 data(banknote)
 banknote$Y <- factor(banknote$Y)
 ```
-3. Us eone of our object inspecting functions and interpret the result in the data that you see.
+3. Use one of our object inspecting functions and interpret the result in the data that you see.
 4. Use the package `ggplot2` to draw a barchart of Y (0 is genuine, 1 is counterfeit). Map Y also to the fill color of the barchart.
 5. Use the package `ggplot2` to draw a histogram of one of the variables in the dataset that shows a distinction between genuine and counterfeit banknotes. Use fill color to show this difference. Choose the binwidth such that there are no gaps in the middle range of the histogram.
 6. Use the package `ggplot2` to draw a scatterplot of two (continuous) measurements, color by Y. Try to find a pair of measurements that allow you to separate perfectly between genuine and counterfeit banknotes. 
