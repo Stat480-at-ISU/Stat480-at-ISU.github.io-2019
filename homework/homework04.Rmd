@@ -1,0 +1,27 @@
+---
+title: 'Stat 480 - Homework #4'
+author: "Your Name"
+date: "2/8/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Chick weights
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. The `ChickWeight` data set is part of the base package `datasets`. See `?ChickWeight` for details on the data.
+Which of the variables are factors? Show the code you use to answer this question.
+3. Find a subset of the data for days 0, 10, and 21. Use `ggplot2` to draw side-by-side boxplots of weights by time. Interpret the result.
+4. How do chicks' weights compare on different diets? Use facetting and side-by-side boxplots of the previous subset. 
+5. How many chicks survive to day 21 on each of the diets? Use facetted barcharts for an answer.
+6. Focus on chicks 10, 25, 35, and 45. Introduce a separate dataset for each of the chicks. For each of them, determine the minimum weight. Introduce a variable `rel.gain` into each dataset that measures the relative gain in weight (weight gain divided by minimum weight). 
+Combine the four data sets into one (use `rbind`).
+Plot lines to show weight gains over time for each of the chicks. Color by Diet. Interpret the result.
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
