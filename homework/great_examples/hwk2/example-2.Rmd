@@ -1,0 +1,67 @@
+---
+title: 'Stat 480 - Homework #2'
+date: "1/25/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(dplyr)
+library(ggplot2)
+```
+
+## Tropical Atmosphere-Ocean Array (TAO)
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. Using the command below, read in the tao data set into your R session. more information on the data can be found  [here](http://www.ggobi.org/book/chap-data.pdf) (page 159.
+
+```{r}
+tao <- read.csv("http://www.ggobi.org/book/data/tao.csv")
+```
+
+3. The order of the records in the data set is such, that the first 368 records correspond to the year 1997, and the next 368 records correspond to the year 1993. Use row indices to create two subsets of the data, one with records for the year 1993, one for the year 1997.
+
+```{r}
+tao1997<-tao[1:368,]
+tao1993<-tao[369:736,]
+```
+
+4. For each of the two subsets, compute the average sea surface temperature (`sea.surface.temp`) and its standard deviation. Comment on the results. (You might have to deal with missing values appropriately).
+```{r}
+mean(tao1997$sea.surface.temp)
+sd(tao1997$sea.surface.temp)
+
+mean(tao1993$sea.surface.temp,na.rm=TRUE)
+sd(tao1993$sea.surface.temp,na.rm=TRUE)
+```
+There is no missing values for the subset tao1997
+Warmer sea effect happened. In fact, the mean of the sea surface temperature was colder in 1993 (23.5 °C) than in 1997 (28.2°C).
+The standard deviations are quite similars. 
+
+5. Compute the correlation between sea surface temperature and air temperature (`air.temp`) for each of the years 1993 and 1997. What does the result tell you about average air temperatures in light of the previous findings?
+
+
+```{r}
+
+cor(tao1993$sea.surface.temp,tao1993$air.temp,use="complete.obs")
+cor(tao1997$sea.surface.temp,tao1997$air.temp,use="complete.obs")
+```
+
+The two correlations are positive (0.89 and 0.74) which means that the air temperature and the sea surface temperature are positively correlated. Regarding theses values we can say that the average air temperature increased over time as the sea surface temperature (from 1993 to 1997).
+
+6. Use `ggplot2` to draw a scatterplot of air temperature and sea surface temperature. Color points by year (`year`). Comment on the result. 
+
+```{r}
+tao$year<-as.factor(tao$year)
+tao %>% 
+  ggplot(aes(x = sea.surface.temp , y = air.temp, colour=year)) +
+  geom_point()
+```
+
+The graph tells us that the air temperature and the sea surface temperature increased from 1993 to 1997. The graph shows a positive lineat strong relationship between the two variables.
+We have two clusters, one for 1993 and one for 1997. 
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 

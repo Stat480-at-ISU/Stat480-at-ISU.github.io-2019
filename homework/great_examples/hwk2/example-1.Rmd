@@ -1,0 +1,63 @@
+---
+title: "Homework 2"
+due date: "January 25, 2018"
+output:
+  html_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Tropical Atmosphere-Ocean Array (TAO)
+
+Reading in the Data:
+```{r}
+tao <- read.csv("http://www.ggobi.org/book/data/tao.csv")
+```
+
+
+Creating two subsets:
+```{r}
+tao97 <- tao[1:368,]
+tao93 <- tao[369:736,]
+```
+
+
+Average sea surface temperature:
+```{r}
+avg97 <- mean(tao97$sea.surface.temp, na.rm = TRUE)
+avg97
+sd97 <- sd(tao97$sea.surface.temp, na.rm = TRUE)
+sd97
+avg93 <- mean(tao93$sea.surface.temp, na.rm = TRUE)
+avg93
+sd93 <- sd(tao93$sea.surface.temp, na.rm = TRUE)
+sd93
+```
+Explanation:
+The average sea surface temperature for 1997 is noticablely higher than of 1993. The standard deviation for the year 1997 is also slightly smaller than that of 1993, therefore indicating that the 1997 data is more tightly clustered around a relatively higher sea surface temperature.
+
+
+Compute correlation:
+```{r}
+taocor93 <- cor(tao93$sea.surface.temp, tao93$air.temp, use = "complete.obs")
+taocor93
+taocor97 <- cor(tao97$sea.surface.temp, tao97$air.temp, use = "complete.obs")
+taocor97
+```
+Explanation:
+Both the 1997 and 1993 sea surface temperatures and air temperatures are pretty highly, positively correlated.
+Therefore, the air temperatures would mimic a lot of the the tendecies of sea surface temperatures in regards to averages and standard deviations. 
+
+
+Create plot:
+```{r}
+library(ggplot2)
+ggplot(data = tao, aes(x=tao$sea.surface.temp, y=tao$air.temp, color = as.factor(year)), na.rm = TRUE) + geom_point() + labs(x = "Surface Temp", y = "Air Temp", title = "Surface Temp vs. Air Temp", color = "Year")
+
+```
+Comments:
+This plot illustrates the findings from questions #4 and #5. Due to the high correlations between Air Temperature and Sea Surface Temperature, the plot dispalys a fairly strong linear relationship. The mean average temps for 1997 are noticeably larger than those in 1993 as evident in the data points being plotted in the upper right hand corner of the plot. The larger standard deviation among the 1993 data points is also evident since there are quite a few "straggling" points located below the 1993 cluster. 
+
