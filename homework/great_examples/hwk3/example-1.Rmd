@@ -1,0 +1,86 @@
+---
+Title: "Homework 3"
+Date: "February 1, 2018"
+Output: html.document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Swiss Banknotes
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. The R package `alr3` contains a data set called `banknote`, consisting of (physical) measurements on 200 Swiss bank notes, 100 of which are genuine, while the other half is counterfeit. Load this data set (you might have to install the package) using the code below. Also run the cryptic third line - it will make your life a lot easier for the rest of the homework. This turns variable Y explicitly into a factor variable, i.e. makes it discrete. We will discuss this in the course material later in more detail.
+
+
+
+```{r, message = FALSE}
+library(alr3)
+data(banknote)
+banknote$Y <- factor(banknote$Y)
+```
+3. Use one of our object inspecting functions and interpret the result in the data that you see.
+
+```{r}
+str(banknote)
+```
+
+
+I used the function str to get the overall structure of the data Banknote. It gives all 7 variables, and that 6 of the 7 are numerical. The last one, variable Y, was changed in the previous code chunk to be a factor variable. We also get to see a quick preview of the first 5 observations, to which we should expect to see left and right observations to be similar, as well as seeing top and bottom similiar.
+
+
+4. Use the package `ggplot2` to draw a barchart of Y (0 is genuine, 1 is counterfeit). Map Y also to the fill color of the barchart.
+
+```{r}
+library(ggplot2)
+ggplot(data=banknote, aes(x=Y, fill = Y)) + geom_bar()
+```
+
+
+
+7a. Structure: This is a basic bar chart where we mapped x as the factor variable Y, which splits up the bills into genuine (0) or counterfeit (1). The fill was also by the variable Y. 
+
+7b. From this plot, we want to see that there are exactly 50 genuine bills and 50 counterfeit bills.
+
+7c. There are no outliers.
+
+
+
+5. Use the package `ggplot2` to draw a histogram of one of the variables in the dataset that shows a distinction between genuine and counterfeit banknotes. Use fill color to show this difference. Choose the binwidth such that there are no gaps in the middle range of the histogram.
+
+```{r}
+ggplot(data=banknote, aes(x= Diagonal, fill = Y)) + geom_histogram(bins = 15)
+```
+
+
+
+7a. Structure: The plot created here is a histogram, where x is the diagonal variable measuring the image diagonal, scaled by count. This plot is filled by the variable Y, where genuine bills are red and counterfeit bills are blue.
+
+7b. From this histogram, we can see that there is a distinct cutoff at 140-141 mm that separates genuine bills from counterfeit bills. We can use this information to identify counterfeit bills because their diagonal length, on average, is too large.
+
+7c. There are two outliers here. The first one is a genuine bill that is measured between 139-140 mm, which is too small compared to all other genuine bills. The other outlier is a counterfeit bill that is too large, as it is the only bill that is greater than 140 mm.
+
+
+
+
+6. Use the package `ggplot2` to draw a scatterplot of two (continuous) measurements, color by Y. Try to find a pair of measurements that allow you to separate perfectly between genuine and counterfeit banknotes.
+
+```{r}
+ggplot(data = banknote, aes(x=Length, y=Diagonal, colour=Y)) + geom_point()
+```
+
+
+
+7a. Structure: This is a scatter plot, where x is the length variable, the overall length of the bill and y is the diagonal variable, the measurement of the image diagonal. The color is by the variable Y to designate which points are genuine (red) and counterfeit (blue). 
+
+7b. From this scatterplot, we can see that there is a distinct cutoff at diagonal length between 140-141 mm. For any overall length variable, if the diagonal measurement is below 141 mm, then we have high confidence that the bill is counterfeit. Also, if the diagonal measurement is above 141 mm, then we have high confidence that the bill is genuine.
+
+7c. There are no outliers here for the identified cutoff of a diagonal measurement of 140-141 mm.
+
+
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
