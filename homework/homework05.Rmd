@@ -1,0 +1,84 @@
+---
+title: 'Stat 480 - Homework #5'
+author: "Your Name"
+date: "2/15/2018"
+output: html_document
+---
+---
+title: 'Stat 480 - Homework #5'
+author: "Your Name"
+date: "2/15/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Flying etiquette
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. FiveThirtyEight is a website founded by Statistician and writer Nate Silver to publish results from  opinion poll analysis, politics, economics, and sports blogging. 
+One of the featured articles considers [flying etiquette](https://fivethirtyeight.com/features/airplane-etiquette-recline-seat/). 
+This article is based on data collected by FiveThirtyEight and publicly available on github. Use the code below to read in the data from the survey:
+```{r}
+fly <- read.csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/flying-etiquette-survey/flying-etiquette.csv")
+```
+3. Some people do not travel often by plane. Provide a breakdown of travel frequency (use variable `How.often.do.you.travel.by.plane.`). Exclude non-fliers  from any future analysis. How many responses are we still considering?
+```{r}
+summary(fly$How.often.do.you.travel.by.plane.)
+fly <- dplyr::filter(fly, How.often.do.you.travel.by.plane. != "Never")
+nrow(fly)
+```
+4. Demographic variables `Education`, `Gender`, `Household.Income` and `Age` were collected for each participant of the survey.
+Draw a barchart for each one of these variables (for a total of four barcharts) and interpret the result. Make sure that the levels are ordered "sensibly".  
+```{r}
+#levels(fly$Age) 
+fly$Age <- factor(fly$Age, levels=c("18-29", "30-44", "45-60", "> 60", ""))
+fly$Household.Income <- factor(fly$Household.Income, levels = c("$0 - $24,999","$25,000 - $49,999", "$50,000 - $99,999", "$100,000 - $149,999", "150000", ""))
+fly$Education <- factor(fly$Education, levels = c("Less than high school degree", "High school degree", "Some college or Associate degree", "Bachelor degree",  "Graduate degree", ""))
+
+
+library(ggplot2)
+ggplot(data = fly, aes(x = Gender)) + geom_bar()
+ggplot(data = fly, aes(x = Age)) + geom_bar()
+ggplot(data = fly, aes(x = Household.Income)) + geom_bar()
+ggplot(data = fly, aes(x = Education)) + geom_bar()
+```
+
+5. Run the command below and interpret the output. What potential purpose can you see for the chart? 
+```{r, fig.width=8, fig.height=3}
+fly$Education = with(fly, factor(Education, levels = rev(levels(Education))))
+
+ggplot(data = fly, aes(x = 1)) + 
+  geom_bar(aes(fill=Education), position="fill") + 
+  coord_flip() +
+  theme(legend.position="bottom") +
+  scale_fill_brewer() + 
+  xlab("Ratio") 
+```
+
+6. Rename the variable `On.a.6.hour.flight.from.NYC.to.LA..how.many.times.is.it.acceptable.to.get.up.if.you.re.not.in.an.aisle.seat` to `get.up`. How many levels does the variable `get.up` have, and what are these levels? Rename the level labeled "" to "Not answered". Bring the levels of `get.up` in an order that reflects the number of times people find it OK to get up from smallest to largest. Put the level "Not answered" last. Draw a barchart of variable `get.up`.  Interpret the result. Incorporate gender in the plot such that you can compare/find differences in responses between men and women.
+```{r}
+names(fly)[11] <- "get.up"
+levels(fly$get.up)
+levels(fly$get.up)[1] <- "Not answered"
+fly$get.up <- factor(fly$get.up, 
+       levels= c("It is not okay to get up during flight", 
+                 "Once",
+                "Twice",
+                "Three times",
+                "Four times",
+                "More than five times times",
+                "Not answered"))
+library(ggplot2)
+ggplot(fly, aes(x = get.up)) + geom_bar(aes(fill=Gender)) + coord_flip()
+ggplot(fly, aes(x = get.up)) + geom_bar(aes(fill=Gender), position="fill") + coord_flip()
+
+```
+
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
