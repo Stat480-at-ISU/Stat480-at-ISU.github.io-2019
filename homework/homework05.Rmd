@@ -53,7 +53,7 @@ ggplot(data = fly, aes(x = 1)) +
   xlab("Ratio") 
 ```
 
-6. Rename the variable `In.general..is.it.rude.to.knowingly.bring.unruly.children.on.a.plane.` to `baby.on.plane.`. How many levels does the variable `baby.on.plane` have, and what are these levels? Rename the level labeled "" to "Not answered". Bring the levels of `baby.on.plane` in an order from least rude to most rude. Put the level "Not answered" last. Draw a barchart of variable `baby.on.plane`.  Interpret the result.
+6. Rename the variable `In.general..is.itrude.to.bring.a.baby.on.a.plane.` to `baby.on.plane.`. How many levels does the variable `baby.on.plane` have, and what are these levels? Rename the level labeled "" to "Not answered". Bring the levels of `baby.on.plane` in an order from least rude to most rude. Put the level "Not answered" last. Draw a barchart of variable `baby.on.plane`.  Interpret the result.
 
 7. Investigate the relationship between gender and the variables `Do.you.have.any.children.under.18.` and `baby.on.plane`. How is the attitude towards babies on planes shaped by gender and own children under 18? Find a plot that summarises your findings (use `ggplot2`).
 
