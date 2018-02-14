@@ -1,0 +1,51 @@
+---
+title: 'Stat 480 - Homework #6'
+author: "Your Name"
+date: "2/22/2018"
+output: html_document
+---
+---
+title: 'Stat 480 - Homework #6'
+author: "Your Name"
+date: "2/22/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ames housing
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. The Ames based, non-profit company OAITI provides aoe open-source data sets. One of these data sets consists of information on all house sales in Ames between 2008 and 2010. The following piece of code allows you to read the dataset into your R session.
+How many house sales were there between 2008 and 2010? Which type of variables are we dealing with?
+
+```{r}
+housing <- read.csv("https://raw.githubusercontent.com/OAITI/open-datasets/master/Housing%20Data/Ames-Housing.csv")
+```
+
+3. Do sales prices change over time? (Don't test significances) Provide a graphic that supports your statement.
+4. What is the relationship between sales prices and the size of the house (living area)? Make a chart and describe the relationship.
+5. Use `dplyr` functions to:
+    
+  - introduce a variable consisting of price per square foot,
+  - find the average price per square foot in each of the Ames neighborhoods,           - exclude averages that are based on fewer than 10 records, 
+  - reorder the remaining neighborhoods according to the mean sales prices. 
+  
+6. Draw a chart of the average sale prices by neighborhood and comment on it. Only consider neighborhoods with at least 10 sales. <br>
+*Extra challenge* (0.5 point extra credit): write the code for this question and the previous one in a single statement.
+7. Use `dplyr` functions to:
+
+  - introduce a logical variable called 'garage' that is FALSE if the garage area is zero, and TRUE otherwise,
+  - exclude all sales of houses that do not have a garage,
+  - only consider 1 and 2 story houses (`HouseStyle`),
+  - create a new variable `YBCut` from `YearBuilt` that introduces age categories that groups the year a house was built into intervals: 1800-1850, 1850-1900, 1950-2000, 2000+ (see `?cut`).
+6. Draw a chart of the previous data set. Draw side-by-side boxplots of the garage area by `YBCut`. Facet by the style of house. Describe and summarise the chart.  <br>
+*Extra challenge* (0.5 point extra credit): write the code for this question and the previous one in a single statement.
+
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
