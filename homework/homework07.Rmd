@@ -22,7 +22,9 @@ Make sure to replace "Your Name" in the YAML with your name.
 2. We are back to a survey collected by FiveThirtyEight. This time we are interested in a survey on Star Wars - the accompanying article is published [here](https://fivethirtyeight.com/features/americas-favorite-star-wars-movies-and-least-favorite-characters/)
 
 ```{r, message=FALSE, warning=FALSE}
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(readr)
 starwars <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/star-wars-survey/StarWars.csv")
 
 # the following lines are necessary to make the second line of the file 
