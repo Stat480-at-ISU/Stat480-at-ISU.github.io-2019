@@ -31,7 +31,7 @@ line1 <- names(starwars)
 line2 <- unlist(starwars[1,])
 varnames <- paste(line1, line2)
 # clean up some of the multibyte characters:
-names(starwars) <- stringi::stri_trans_general(varnames, "latin-ascii")
+names(starwars) <- enc2native(stringi::stri_trans_general(varnames, "latin-ascii"))
 
 starwars <- starwars[-1,]
 ```
