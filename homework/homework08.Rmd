@@ -1,0 +1,49 @@
+---
+title: 'Stat 480 - Homework #8'
+author: "Your Name"
+date: "3/8/2018"
+output: html_document
+---
+---
+title: 'Stat 480 - Homework #8'
+author: "Your Name"
+date: "3/8/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Star Wars - Episode V
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. We are back to investigating the Star Wars survey by FiveThirtyEight. We doanload and prep the data in the same way as last time:
+
+```{r, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(readr)
+starwars <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/star-wars-survey/StarWars.csv")
+
+# the following lines are necessary to make the second line of the file 
+# part of the names:
+line1 <- names(starwars)
+line2 <- unlist(starwars[1,])
+varnames <- paste(line1, line2)
+# clean up some of the multibyte characters:
+names(starwars) <- enc2native(stringi::stri_trans_general(varnames, "latin-ascii"))
+
+starwars <- starwars[-1,]
+```
+
+3. Variables 10 through 15 answer the question: "Please rank the Star Wars films in order of preference with 1 being your favorite film in the franchise and 6 being your least favorite film." Use `gather` as shown in class to transform the data into a tidier format with new variables 'movie' and 'ranking'. Save the result in a data frame called `ranks`.
+4. If participants are following the rules, each participant should give out a ranking of 1 through 6, for an overall sum of ranks of 21. Use the data frame `ranks` to check how many participants followed the rules. Those who didn't - how did they not follow the rules?
+5. Variables 16 through 29 answer the question on a character's popularity between Very unfavorably to Very favorably. Gather all of these variables and create a long form of the data, introducing two new variables called `character` and `rating`. Save the result in a data frame called `popular`.
+6. For the `popular` data frame, reorder the variable `rating` according to popularity from least popular to most popular. Change the level `Unfamiliar` to a missing value. Change the level "Please state whether you view the following characters favorably, unfavorably, or are unfamiliar with him/her. Han Solo" in the variable `character` to `Han Solo`.
+7. For the modified `popular` data set, calculate average ratings for each of the characters (use scores 1 through 5 for the `rating` variable). Are men and women rating the characters differently? Plot average ratings by character, colour ratings by gender. Sort characters by overall popularity. Which character is the most liked, which the least? Are there characters with large differences in popularity between the genders? 
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
