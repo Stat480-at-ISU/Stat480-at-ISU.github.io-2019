@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. Download the RMarkdown file with these homework instructions to use as a template for your work.
 Make sure to replace "Your Name" in the YAML with your name.
-2. We are back to investigating the Star Wars survey by FiveThirtyEight. We doanload and prep the data in the same way as last time:
+2. We are back to investigating the Star Wars survey by FiveThirtyEight. We download and prep the data in the same way as last time:
 
 ```{r, message=FALSE, warning=FALSE}
 library(dplyr)

@@ -1,0 +1,45 @@
+---
+title: 'Stat 480 - Homework #9'
+author: "Your Name"
+date: "3/22/2018"
+output: html_document
+---
+---
+title: 'Stat 480 - Homework #9'
+author: "Your Name"
+date: "3/22/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Weekly box office data
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. For this homework we use the data set `box` from the `classdata` package, which consists of weekly box office gross for movies of the last five year.
+
+```{r, message=FALSE, warning=FALSE}
+# devtools::install_github("heike/classdata")
+library(classdata)
+
+head(box)
+```
+
+3. In class we discussed two instances where a movie was released under the same name as a different movie previously. Identify at least one more instance of a movie where that happened. Report the name of the movie, search online for additional information. Describe the strategy you used to identify this movie, report the code involved.
+3. Re-derive variables: `Change` (percent change in gross income from last week), `Rank.Last.Week`, `Per.Thtr.` (as gross per theater), and `Total.Gross` (as the cumulative sum of weekly gross).
+4. For the variables `Per.Thtr.` and `Change` compare the original variables and the newly derived ones. Are there differences? Where? Try to describe patterns you find.
+5. Is the original variable `Total.Gross` strictly increasing? 
+6. Identify the three top grossing movies for each year. 
+Plan of attack: 
+    - Extract the year from the `Date` variable.
+    - Summarize the total gross for each movie and each year.
+    - Find the rank of movies by total gross in each year.
+    - Filter the top three movies.
+
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
