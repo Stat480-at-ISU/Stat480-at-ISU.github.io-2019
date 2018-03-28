@@ -37,7 +37,7 @@ This homework is going to be graded on three metrics: curiosity, skepticism, and
 Present best ideas, rather than all ideas. Additional research from other sources 
 used to help understand/explain findings.<br>
 *scepticism*: Demonstrate that you are critical of findings, use multiple approaches and techniques to verify unintuitive results.<br>
-*organization*: Findings are well organised with a clear structure. Clear evidence of systematic analysis. Charts and tables are optimized for the use.
+*organization*: Findings are well organised with a clear structure. Clear evidence of systematic analysis. Charts and tables are optimized for the use, and you kept to the page limit.
 
 In each of the three metrics you can get a maximum of 3 points. The last point for the homework is determined by whether your findings are completely (computationally) reproducible.
 
