@@ -1,0 +1,47 @@
+---
+title: 'Stat 480 - Homework #10'
+author: "Your Name"
+date: "4/5/2018"
+output: html_document
+---
+---
+title: 'Stat 480 - Homework #10'
+author: "Your Name"
+date: "4/5/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Statistical movie consultant
+
+1. Download the RMarkdown file with these homework instructions to use as a template for your work.
+Make sure to replace "Your Name" in the YAML with your name.
+2. For this homework you should start by using the data sets `box` and `budget` from the `classdata` package, which consists of weekly box office gross for movies of the last five year and information on the ~5000 movies with the highest production budgets.
+
+```{r, message=FALSE, warning=FALSE}
+# devtools::install_github("heike/classdata")
+library(classdata)
+
+head(box)
+```
+
+3. Imagine that you are working for a statistical consulting company that wants to land a contract with a medium sized movie distributor (you can pick a distributor, if you want). Your job is to make a pitch to the company about what you could do for them in terms of data exploration. For that, your boss asks you to describe in one page of write-up (including 1-2 visuals) 'something interesting' about the movie industry.
+
+Make sure that your writeup is comprehensive: you need to (a) motivate and describe your line of inquiry, (b) describe the relevant data source(s), and (c) describe your findings.
+
+This homework is going to be graded on three metrics: curiosity, skepticism, and organization:<br>
+*curiosity*: Ideally you demonstrate an intense exploration with (some) evidence of trials and failures. 
+Present best ideas, rather than all ideas. Additional research from other sources 
+used to help understand/explain findings.<br>
+*scepticism*: Demonstrate that you are critical of findings, use multiple approaches and techniques to verify unintuitive results.<br>
+*organization*: Findings are well organised with a clear structure. Clear evidence of systematic analysis. Charts and tables are optimized for the use.
+
+In each of the three metrics you can get a maximum of 3 points. The last point for the homework is determined by whether your findings are completely (computationally) reproducible.
+
+
+Due date: the homework is due before class on Thursday. 
+
+For the submission: submit your solution in an R Markdown file and (just for insurance) submit the corresponding html file with it. 
