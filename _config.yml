@@ -16,9 +16,13 @@ navigation:
   url: /homework.html
 - text: Midterm
   url: /midterm.html
+- text: Final Presentations
+  url: /presentations
+  layout:
+    - post
 - text: Final Projects
   url: /projects.html
 collections:
   topics:
     output: true
-    permalink: /blog/:path/
+    permalink: /presentations/:path/
