@@ -17,9 +17,7 @@ navigation:
 - text: Midterm
   url: /midterm.html
 - text: Final Presentations
-  url: /presentations
-  layout:
-    - post
+  url: /presentations.html
 - text: Final Projects
   url: /projects.html
 collections:
